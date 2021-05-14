@@ -66,7 +66,7 @@ spec:
         kind: ClusterTask
       params:
         - name: IMAGE
-          value: quay.io/pittar/contoso:latest
+          value: quay.io/vazonline/contoso:latest
         - name: DOCKERFILE
           value: ./Containerfile
       workspaces:
@@ -158,7 +158,7 @@ spec:
         - name: old-image
           value: contoso
         - name: new-image
-          value: "quay.io/pittar/contoso"
+          value: "quay.io/vazonline/contoso"
         - name: new-tag
           value: "$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid)"
         - name: overlaypath
@@ -184,7 +184,7 @@ spec:
             cat ~/.gitconfig
             git config --global user.email "pipeline@redhat.com"
             git add -u
-            git commit -m "Pushing image quay.io/pittar/contoso:$tag to production"
+            git commit -m "Pushing image quay.io/vazonline/contoso:$tag to production"
             git push origin push-$tag
     - name: prod-pr-deploy
       taskRef:
@@ -204,7 +204,7 @@ spec:
           value: |-
             Please review the following and accept this PR to rollout to PROD.
 
-            Review any security issues with this image here: https://quay.io/pittar/contoso:$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid)
+            Review any security issues with this image here: https://quay.io/vazonline/contoso:$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid)
 
     # - name: run-database-migrations
     #   taskRef:
