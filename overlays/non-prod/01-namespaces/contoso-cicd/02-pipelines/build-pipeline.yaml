@@ -19,7 +19,7 @@ spec:
       default: "main"
     - name: gitops-url
       type: string
-      default: "https://github.com/pittar-sandbox/dotnet-contoso-gitops-developers.git"
+      default: "https://github.com/Gitvazonline/dotnet-contoso-gitops-developers.git"
     - name: gitops-revision
       type: string
       default: "main"
@@ -83,9 +83,9 @@ spec:
         - build-image
       params:
         - name: src-image
-          value: "quay.io/pittar/contoso:latest"
+          value: "quay.io/vazonline/contoso:latest"
         - name: dest-image
-          value: "quay.io/pittar/contoso"
+          value: "quay.io/vazonline/contoso"
         - name: dest-tags
           value: "$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid),dev"
     - name: rollout-dev
@@ -107,9 +107,9 @@ spec:
         - rollout-dev
       params:
         - name: src-image
-          value: "quay.io/pittar/contoso:$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid)"
+          value: "quay.io/vazonline/contoso:$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid)"
         - name: dest-image
-          value: "quay.io/pittar/contoso"
+          value: "quay.io/vazonline/contoso"
         - name: dest-tags
           value: "test"
     - name: rollout-test
