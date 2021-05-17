@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - 01-cicd-image-puller-rolebinding.yaml
+  - 02-pipeline-image-builder-rolebinding.yaml
