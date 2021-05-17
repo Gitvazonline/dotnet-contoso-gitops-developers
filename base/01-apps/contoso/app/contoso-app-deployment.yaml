@@ -29,7 +29,7 @@ spec:
         deploymentconfig: contoso
     spec:
       containers:
-        - image: quay.io/pittar/contoso:latest
+        - image: image-registry.openshift-image-registry.svc:5000/petclinic/petclinic:latest
           imagePullPolicy: Always
           name: contoso
           ports:
