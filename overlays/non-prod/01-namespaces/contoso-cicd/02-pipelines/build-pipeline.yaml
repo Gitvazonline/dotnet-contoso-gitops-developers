@@ -69,6 +69,8 @@ spec:
           value: image-registry.openshift-image-registry.svc:5000/petclinic/petclinic:latest
         - name: DOCKERFILE
           value: ./Containerfile
+        - name: TLSVERIFY
+          value: 'false'
       workspaces:
         - name: source
           workspace: shared-workspace
