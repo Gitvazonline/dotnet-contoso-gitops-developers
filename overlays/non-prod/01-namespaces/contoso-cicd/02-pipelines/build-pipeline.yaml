@@ -66,7 +66,7 @@ spec:
         kind: ClusterTask
       params:
         - name: IMAGE
-          value: quay.io/vazonline/contoso:latest
+          value: image-registry.openshift-image-registry.svc:5000/petclinic/petclinic:latest
         - name: DOCKERFILE
           value: ./Containerfile
       workspaces:
@@ -83,9 +83,9 @@ spec:
         - build-image
       params:
         - name: src-image
-          value: "quay.io/vazonline/contoso:latest"
+          value: "image-registry.openshift-image-registry.svc:5000/petclinic/petclinic:latest"
         - name: dest-image
-          value: "quay.io/vazonline/contoso"
+          value: "image-registry.openshift-image-registry.svc:5000/petclinic/petclinic"
         - name: dest-tags
           value: "$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid),dev"
     - name: rollout-dev
@@ -107,9 +107,9 @@ spec:
         - rollout-dev
       params:
         - name: src-image
-          value: "quay.io/vazonline/contoso:$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid)"
+          value: "image-registry.openshift-image-registry.svc:5000/petclinic/petclinic:$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid)"
         - name: dest-image
-          value: "quay.io/vazonline/contoso"
+          value: "image-registry.openshift-image-registry.svc:5000/petclinic/petclinic"
         - name: dest-tags
           value: "test"
     - name: rollout-test
@@ -184,7 +184,7 @@ spec:
             cat ~/.gitconfig
             git config --global user.email "pipeline@redhat.com"
             git add -u
-            git commit -m "Pushing image quay.io/vazonline/contoso:$tag to production"
+            git commit -m "Pushing image image-registry.openshift-image-registry.svc:5000/petclinic/petclinic:$tag to production"
             git push origin push-$tag
     - name: prod-pr-deploy
       taskRef:
@@ -204,17 +204,3 @@ spec:
           value: |-
             Please review the following and accept this PR to rollout to PROD.
 
-            Review any security issues with this image here: https://quay.io/vazonline/contoso:$(tasks.generate-id.results.short-commit)-$(tasks.generate-id.results.build-uid)
-
-    # - name: run-database-migrations
-    #   taskRef:
-    #     name: dotnet-cli
-    #     kind: Task
-    #   runAfter:
-    #     - build-image
-    #   workspaces:
-    #     - name: source
-    #       workspace: shared-workspace
-    #   params:
-    #     - name: COMMANDS
-    #       value: ["ef","database","update"]
