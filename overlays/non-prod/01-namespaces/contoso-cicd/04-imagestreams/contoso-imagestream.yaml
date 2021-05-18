@@ -1,0 +1,12 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: contoso
+    app.kubernetes.io/name: contoso
+    app.openshift.io/runtime: dotnet
+    app.openshift.io/runtime-version: "5"
+  name: contoso
+spec:
+  lookupPolicy:
+    local: false

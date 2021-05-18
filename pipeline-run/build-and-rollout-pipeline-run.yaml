@@ -10,13 +10,13 @@ spec:
     name: contoso-devops-pipeline
   params:
     - name: "git-url"
-      value: "https://github.com/pittar-sandbox/dotnet-contoso-app.git"
+      value: "https://github.com/Gitvazonline/dotnet-contoso-app.git"
     - name: "git-revision"
       value: "main"
     - name: "app-name"
       value: "contoso"
     - name: "gitops-url"
-      value: "https://github.com/pittar-sandbox/dotnet-contoso-gitops-developers.git"
+      value: "https://github.com/Gitvazonline/dotnet-contoso-gitops-developers.git"
     - name: "gitops-revision"
       value: "main"
   workspaces:

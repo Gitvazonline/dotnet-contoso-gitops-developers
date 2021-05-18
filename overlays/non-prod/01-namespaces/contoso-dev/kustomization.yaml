@@ -7,6 +7,6 @@ bases:
   - ../../../../base/01-apps/contoso
 
 images:
-  - name: quay.io/vazonline/contoso
-    newName: quay.io/vazonline/contoso
+  - name: image-registry.openshift-image-registry.svc:5000/contoso-cicd/contoso
+    newName: image-registry.openshift-image-registry.svc:5000/contoso-cicd/contoso
     newTag: dev
