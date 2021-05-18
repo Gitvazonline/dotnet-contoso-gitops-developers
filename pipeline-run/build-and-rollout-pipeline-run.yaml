@@ -16,7 +16,7 @@ spec:
     - name: "app-name"
       value: "contoso"
     - name: "gitops-url"
-      value: "https://github.com/pittar-sandbox/dotnet-contoso-gitops-developers.git"
+      value: "https://github.com/Gitvazonline/dotnet-contoso-gitops-developers.git"
     - name: "gitops-revision"
       value: "main"
   workspaces:
